@@ -1,0 +1,16 @@
+<h3> ¿A donde te gustaria ir? </h3>
+  <div ng-show="fail">
+    <h4> Oops, algo salio mal.. </h4>
+    <h5 class="alert alert-error"> {{error}} </h5>
+  </div>
+  <div ng-show="success">
+    <h4 class="alert alert-success">Listo!, agregaste {{lastCity.name}} a tu lista</h4>
+  </div>
+  <div ng-class="status">
+    <input type="text" ng-model="newCity" placeholder="¿A que ciudad?">
+    <input type="text" ng-model="newCountry" placeholder="¿En que pais?">
+  </div>
+  <div>
+    <input type="button" value="Agregar" ng-click="agregar()">
+    <a href="#/">Volver</a>
+  </div>
