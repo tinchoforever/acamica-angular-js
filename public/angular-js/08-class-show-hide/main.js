@@ -3,10 +3,10 @@ var app = angular.module('cityApp', ['ngRoute']);
 app.config(['$routeProvider',
 function($routeProvider){
   $routeProvider
-  .when('/',{ 
+  .when('/',{
      templateUrl:'main.html',
      controller: 'MainController'
-  }).when('/agregar',{ 
+  }).when('/agregar',{
      templateUrl:'agregar.html',
      controller: 'AddController'
   });
@@ -29,7 +29,7 @@ app.factory('cityFactory', function($http){
   return factory;
 });
 app.controller('MainController', function($scope, cityFactory) {
-  
+
   var loadCities = function(){
       cityFactory.getAll(function(result){
       $scope.cities = result;
@@ -46,34 +46,35 @@ app.controller('MainController', function($scope, cityFactory) {
 });
 
 app.controller('AddController', function($scope, cityFactory) {
-  
+
   $scope.status= '';
 
   $scope.agregar = function(){
+    $scope.success = false;
     var newCity = {
       name: $scope.newCity,
       country: $scope.newCountry
     };
     cityFactory.add(newCity, function(result){
-      
+
       $scope.success = true;
       $scope.lastCity = newCity;
-      
+
       $scope.newCity= '';
       $scope.newCountry = '';
-      
+
       $scope.error = '';
       $scope.fail = false;
 
       $scope.status ='';
 
     },function (result) {
-      console.log(result);
+
       $scope.status ='alert alert-error';
       $scope.error = result.error;
       $scope.fail = true;
     });
-    
-    
+
+
   };
 });

@@ -23,7 +23,11 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -32,9 +36,9 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
+app.get('/api/v1/cities/all', citiesAPI.all);
 app.post('/api/v1/cities', citiesAPI.add);
 app.delete('/api/v1/cities/:id', citiesAPI.remove);
-app.get('/api/v1/cities/all', citiesAPI.all);
 
 
 

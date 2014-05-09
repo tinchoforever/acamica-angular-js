@@ -2,6 +2,7 @@ var cities = require("../services/cities");
 
 exports.all = function(request,response){
     cities.all(function(data){
+
         response.json(data);
         response.end();
     });
@@ -23,7 +24,7 @@ exports.add = function(request,response){
 		response.status(500);
 		response.json(data);
         response.end();
-		
+
 	}
     cities.add(city, function(data){
     	if (!data.success){

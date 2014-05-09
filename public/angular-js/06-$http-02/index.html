@@ -6,12 +6,11 @@
   <title>Mi primer Angular SPA App </title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
-  
-  
-  
+
+
 <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
- 
+
 
 </head>
   <body>
@@ -24,9 +23,9 @@
     <input type="text" placeholder="Filtra las ciudades" ng-model="name">
     <ul>
       <li ng-repeat="city in cities | filter:name | orderBy:'name'"> {{city.name}} - {{city.country}}</li>
-     
+
     </ul>
-    <a href="#/agregar">Agregar </a>
+
   </script>
   <script type='text/ng-template' id='agregar.html'>
     <h3> ¿A donde te gustaria ir? </h3>
@@ -39,6 +38,6 @@
     <h3> ¿ Para que sirve esta app ?</h3>
      <p> Esta app es un ejemplo para el curso de Acamica de Angularjs </p>
   </script>
-   
+
    <script src="main.js"></script>
 </html>

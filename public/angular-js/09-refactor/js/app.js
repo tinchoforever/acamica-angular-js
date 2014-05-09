@@ -4,14 +4,14 @@ angular.module('cityApp.factories', []);
 angular.module('cityApp', [
   'ngRoute',
   'cityApp.controllers',
-  'cityApp.factories',])
+  'cityApp.factories'])
   .config(['$routeProvider',
     function($routeProvider){
       $routeProvider
-      .when('/',{ 
+      .when('/',{
          templateUrl:'partials/main.html',
          controller: 'MainController'
-      }).when('/agregar',{ 
+      }).when('/agregar',{
          templateUrl:'partials/agregar.html',
          controller: 'AddController'
       });
