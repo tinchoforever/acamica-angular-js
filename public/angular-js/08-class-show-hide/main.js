@@ -66,10 +66,10 @@ app.controller('AddController', function($scope, cityFactory) {
       $scope.error = '';
       $scope.fail = false;
 
-      $scope.status ='';
+
 
     },function (result) {
-
+      console.log(result);
       $scope.status ='alert alert-error';
       $scope.error = result.error;
       $scope.fail = true;
