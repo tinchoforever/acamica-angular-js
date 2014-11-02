@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app='cityApp'>
+<head>
+
+  <meta charset="utf-8">
+  <title>Mi primer Angular SPA App </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
+
+
+
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+  <body>
+    <h1> City App! </h1>
+  <div ng-view>
+  </div>
+</body>
+  <script type='text/ng-template' id='main.html'>
+    <h2>Ciudades que quiero visitar</h2>
+    <input type="text" placeholder="Filtra las ciudades" ng-model="name">
+    <ul>
+      <li ng-repeat="city in cities | filter:name | orderBy:'name'"> {{city.name}} - {{city.country}}
+        <a href="" ng-click="remover(city)">[x]</a>
+      </li>
+
+    </ul>
+    <a href="#/agregar">Agregar </a>
+  </script>
+  <script type='text/ng-template' id='agregar.html'>
+    <h3> ¿A donde te gustaria ir? </h3>
+      <div ng-show="fail">
+        <h4> Oops, algo salio mal.. </h4>
+        <h5 class="alert alert-error"> {{error}} </h5>
+      </div>
+      <div>
+        <input type="text" ng-model="newCity" placeholder="¿A que ciudad?">
+        <input type="text" ng-model="newCountry" placeholder="¿En que pais?">
+      </div>
+      <div>
+        <input type="button" value="Agregar" ng-click="agregar()">
+        <a href="#/">Volver</a>
+      </div>
+  </script>
+  <script type='text/ng-template' id='acerca.html'>
+    <h3> ¿ Para que sirve esta app ?</h3>
+     <p> Esta app es un ejemplo para el curso de Acamica de Angularjs </p>
+  </script>
+
+   <script src="main.js"></script>
+</html>
